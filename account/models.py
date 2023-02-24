@@ -14,8 +14,8 @@ class User(AbstractBaseUser, PermissionsMixin):
         (FEMALE, 'Female'),
         (UNSURE, 'Unsure')
     )
-    username = models.CharField(max_length=32, unique=True, null=True, blank=True)
-    phone = PhoneNumberField(null=True, blank=True)
+    username = models.CharField(max_length=32, unique=True, null=True)
+    phone = PhoneNumberField(null=True, unique=True)
     email = models.EmailField(unique=True)
     first_name = models.CharField(max_length=32, null=True, blank=True)
     last_name = models.CharField(max_length=64, null=True, blank=True)
@@ -26,7 +26,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     birthday = models.DateField(null=True, blank=True)
     is_active = models.BooleanField(default=True)
     is_seller = models.BooleanField(default=False)
-    is_admin = models.BooleanField(default=False)
+    is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
 
     objects = UserManager()
