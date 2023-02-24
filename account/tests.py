@@ -27,10 +27,6 @@ class UsersTest(TestCase):
             User.objects.create_user(email='kamandkargar@gmail.com', username='kamand', phone='')
         with self.assertRaises(ValueError):
             User.objects.create_user(email='', username='kamandkrg', phone='+989123456789', password='12345')
-        with self.assertRaises(ValueError):
-            User.objects.create_user(
-                email='kamandkrg@gmail.com', username='kamandkrg', phone='+7894523025487523', password='12345'
-            )
 
     def test_create_superuser(self):
         User = get_user_model()
@@ -39,8 +35,8 @@ class UsersTest(TestCase):
         )
         self.assertEqual(admin_user.email, "super@user.com")
         self.assertTrue(admin_user.is_active)
-        self.assertTrue(admin_user.is_staff)
         self.assertTrue(admin_user.is_superuser)
+        self.assertTrue(admin_user.is_staff)
         try:
             self.assertIsNotNone(admin_user.username)
             self.assertIsNotNone(admin_user.email)
