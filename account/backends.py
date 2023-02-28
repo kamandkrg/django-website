@@ -1,10 +1,12 @@
+from django.contrib.auth import get_user_model
 from django.contrib.auth.backends import BaseBackend
-from django.contrib.auth.models import User
 from django.db.models import Q
 
+User = get_user_model()
 
 class MyBackend(BaseBackend):
-    def authenticate(self, username=None, password=None):
+    def authenticate(self, request, username=None, password=None):
+        print(111111111111111111111111111112222222222222222)
         try:
             user = User.objects.get(Q(username=username) | Q(email=username) | Q(phone=username))
             if user and user.check_password(password):
