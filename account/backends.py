@@ -6,7 +6,6 @@ User = get_user_model()
 
 class MyBackend(BaseBackend):
     def authenticate(self, request, username=None, password=None):
-        print(111111111111111111111111111112222222222222222)
         try:
             user = User.objects.get(Q(username=username) | Q(email=username) | Q(phone=username))
             if user and user.check_password(password):
