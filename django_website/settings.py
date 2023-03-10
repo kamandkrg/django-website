@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'account.apps.AccountConfig',
+    'rest_framework',
     'phonenumber_field'
 ]
 AUTH_USER_MODEL = 'account.User'
