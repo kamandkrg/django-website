@@ -1,9 +1,9 @@
 from django.contrib import admin
 from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin
+from account.forms import NewUserForm, UserChangeForm
 
 User = get_user_model()
-from account.forms import NewUserForm, UserChangeForm
 
 
 class AccountAdmin(UserAdmin):
